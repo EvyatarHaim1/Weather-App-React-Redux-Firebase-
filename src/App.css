@@ -1,6 +1,7 @@
-.App {
+/* .App {
   text-align: center;
-}
+  text-decoration: none;
+} */
 
 .header {
   display: flex;
@@ -11,7 +12,11 @@
   padding-right: "2%";
 }
 
-@media (prefers-reduced-motion: no-preference) {
+link {
+  text-decoration: none;
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -24,4 +29,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

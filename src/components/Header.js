@@ -11,7 +11,10 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-
+    },
+    toolbar: {
+        paddingLeft: '2%',
+        paddingRight: '3%'
     },
     title: {
         flexGrow: 1,
@@ -26,12 +29,12 @@ export default function ButtonAppBar() {
     return (
         <div className={classes.root}>
             <AppBar position="static" color="default">
-                <Toolbar>
+                <Toolbar className={classes.toolbar}>
                     <Typography variant="h6" className={classes.title}>
                         Herolo Weather Task
                     </Typography>
-                    <Link to="/"> <Button color="primary"><HomeIcon /></Button></Link>
-                    <Link to="/favorites"> <Button color="inherit"><FavoriteIcon /></Button></Link>
+                    <Link to="/"> <Button color="inherit"><HomeIcon /></Button></Link>
+                    <Link to="/favorites"> <Button color="primary"><FavoriteIcon /></Button></Link>
                 </Toolbar>
             </AppBar>
         </div>
