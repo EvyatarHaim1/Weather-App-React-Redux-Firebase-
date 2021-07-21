@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { wheater_app_key, baseURL } from '../keys'
+import { useSelector, useDispatch } from 'react-redux'
 import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Input } from '@material-ui/core';
@@ -11,9 +12,11 @@ export default function Searchbar() {
     const [CityData, setCityData] = useState({});
     const [results, setResults] = useState([])
 
+    const dispatch = useDispatch()
+
     useEffect(() => {
         try {
-            let fetchCity = fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key}&q=${city}`)
+            fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key}&q=${city}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -29,6 +32,7 @@ export default function Searchbar() {
     }
 
     const chooseCity = () => {
+        dispatch({ type: "UPDATE_CITY" })
         setCity('')
         setResults([])
     }
