@@ -7,10 +7,7 @@ const reducers = combineReducers({
     city: cityReducer,
 });
 
-
-
 const rootReducer = (state, action) => {
-    // when a logout action is dispatched it will reset redux state
     return reducers(state, action);
 };
 

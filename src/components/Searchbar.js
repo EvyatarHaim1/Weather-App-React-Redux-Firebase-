@@ -12,6 +12,9 @@ export default function Searchbar() {
     const [CityData, setCityData] = useState({});
     const [results, setResults] = useState([])
 
+    // const cityName = useSelector((state) => state.city.city);
+    // const locationKey = useSelector((state) => state.city.locationKey);
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -31,19 +34,20 @@ export default function Searchbar() {
         setResults([])
     }
 
-    const chooseCity = () => {
-        dispatch({ type: "UPDATE_CITY" })
+    const chooseCity = (cityName) => {
         setCity('')
         setResults([])
+        dispatch({ type: "UPDATE_CITY", payload: cityName })
     }
 
     return (
         <>
             <Div>
                 <SearchIcon />
-                <Input style={{ width: '85%', marginLeft: '2%' }} disableUnderline={true}
+                <Input style={{ width: '85%', marginLeft: '2%' }} value={city} disableUnderline={true}
                     placeholder="Select city" onChange={(e) => setCity(e.target.value)} />
-                {results.length >= 1 && <CancelIcon onClick={clearResults} />}
+                {city.length >= 1 && city !== 'tel aviv' &&
+                    <CancelIcon onClick={clearResults} />}
             </Div>
             {results.length >= 1 && city !== 'tel aviv' &&
                 <List>
