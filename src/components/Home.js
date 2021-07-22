@@ -8,8 +8,9 @@ export default function Home() {
     return (
         <Div>
             <Searchbar />
-            <CurrentWeather />
-            <Forecast />
+            <Content>
+                <CurrentWeather />
+            </Content>
         </Div>
     )
 }
@@ -19,4 +20,12 @@ display: flex;
 flex-direction: column;
     justify-content:center;
     align-items:center;
+`
+const Content = styled.div`
+display: flex;
+justify-content:center;
+border: 2px solid lightgray;
+padding: 2%;
+margin-top: 4%;
+width: 60%;
 `
