@@ -34,10 +34,11 @@ export default function Searchbar() {
         setResults([])
     }
 
-    const chooseCity = (cityName) => {
+    const chooseCity = (city) => {
         setCity('')
         setResults([])
-        dispatch({ type: "UPDATE_CITY", payload: cityName })
+        console.log('this is the chosen city', city.LocalizedName, city.Key)
+        dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, Key: city.Key } })
     }
 
     return (
@@ -52,7 +53,7 @@ export default function Searchbar() {
             {results.length >= 1 && city !== 'tel aviv' &&
                 <List>
                     {results.map(city => (
-                        <Option onClick={() => chooseCity(city.LocalizedName)}>
+                        <Option onClick={() => chooseCity(city)}>
                             {city.Country.ID}{'  '}{city.LocalizedName}
                         </Option>
                     ))}

@@ -10,7 +10,7 @@ export default function CurrentWeather() {
 
     useEffect(() => {
         try {
-            fetch(`${baseURL}/currentconditions/v1/215854?apikey=${wheater_app_key}&language=en&details=true`)
+            fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key}&language=en&details=true`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
