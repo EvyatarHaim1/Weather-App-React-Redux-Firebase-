@@ -30,9 +30,9 @@ export default function CurrentWeather() {
         setliked(!liked)
         const newFavorite = {
             city: cityName,
-            status: statusAnim,
+            // status: statusAnim,
             currentWeather: currentWeather,
-            status: status,
+            // status: status,
         }
         dispatch({ type: 'ADD_TO_FAVORITES', payload: newFavorite })
     }
