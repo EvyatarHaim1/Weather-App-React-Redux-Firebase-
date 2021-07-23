@@ -3,17 +3,19 @@ import { UPDATE_CITY } from "./city.action";
 const initialState = {
     city: 'tel aviv',
     locationKey: '215854',
-    forcast: [],
     currentWeather: '',
+    forcast: [],
+
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'UPDATE_CITY':
-            console.log('from redux', action.payload)
-        // return action.payload;
-        case 'CURRENT_WEATHER':
-            return action.payload;
+        case UPDATE_CITY:
+            return {
+                ...state,
+                city: action.payload.city,
+                locationKey: action.payload.key
+            }
         default:
             return state;
     }

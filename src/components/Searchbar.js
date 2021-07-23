@@ -45,7 +45,7 @@ export default function Searchbar() {
         <>
             <Div>
                 <SearchIcon />
-                <Input style={{ width: '85%', marginLeft: '2%' }} value={city} disableUnderline={true}
+                <Input style={{ width: '85%', marginLeft: '2%' }} disableUnderline={true}
                     placeholder="Select city" onChange={(e) => setCity(e.target.value)} />
                 {city.length >= 1 && city !== 'tel aviv' &&
                     <CancelIcon onClick={clearResults} />}

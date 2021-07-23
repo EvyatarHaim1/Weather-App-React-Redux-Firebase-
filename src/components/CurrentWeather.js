@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { wheater_app_key, baseURL } from '../keys';
-import sunny from '../assets/images/64906-sunny.gif'
+import sunny from '../assets/images/sunny.gif'
 import emptyHeart from '../assets/images/emptyHeart.png';
+import animHeart from '../assets/images/animHeart.gif';
 
 export default function CurrentWeather() {
+    const [liked, setliked] = useState(false);
     const dispatch = useDispatch()
     const cityName = useSelector((state) => state.city.city);
     const currentWeather = useSelector((state) => state.city.currentWeather)
@@ -24,6 +26,17 @@ export default function CurrentWeather() {
         }
     }, [])
 
+    const addToFavorites = () => {
+        setliked(!liked)
+        const newFavorite = {
+            city: cityName,
+            status: statusAnim,
+            currentWeather: currentWeather,
+            status: status,
+        }
+        dispatch({ type: 'ADD_TO_FAVORITES', payload: newFavorite })
+    }
+
     return (
         <Div>
             <SectionL>
@@ -37,7 +50,8 @@ export default function CurrentWeather() {
             <div>
             </div>
             <HeartImg
-                src={emptyHeart}
+                src={!liked ? emptyHeart : animHeart}
+                onClick={() => addToFavorites()}
                 alt="emptyHeart"
             />
         </Div>
