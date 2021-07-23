@@ -7,7 +7,7 @@ export default function City() {
     return (
         <Div>
             Tel Aviv
-            <Img src={animationToStatus('cloudy')} alt="animation" />
+            <Img src={animationToStatus('Cloudy')} alt="animation" />
             29.3C° <br />
             sunny
         </Div>

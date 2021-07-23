@@ -8,8 +8,7 @@ import { Input } from '@material-ui/core';
 
 export default function Searchbar() {
 
-    const [city, setCity,] = useState('tel aviv');
-    const [CityData, setCityData] = useState({});
+    const [city, setCity,] = useState('');
     const [results, setResults] = useState([])
 
     // const cityName = useSelector((state) => state.city.city);
@@ -38,14 +37,14 @@ export default function Searchbar() {
         setCity('')
         setResults([])
         console.log('this is the chosen city', city.LocalizedName, city.Key)
-        dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, Key: city.Key } })
+        dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, key: city.Key } })
     }
 
     return (
         <>
             <Div>
                 <SearchIcon />
-                <Input style={{ width: '85%', marginLeft: '2%' }} disableUnderline={true}
+                <Input style={{ width: '85%', marginLeft: '2%' }} value={city} disableUnderline={true}
                     placeholder="Select city" onChange={(e) => setCity(e.target.value)} />
                 {city.length >= 1 && city !== 'tel aviv' &&
                     <CancelIcon onClick={clearResults} />}

@@ -25,6 +25,7 @@ const Content = styled.div`
 display: flex;
 justify-content:center;
 border: 2px solid lightgray;
+border-radius: 20px;
 padding: 2%;
 margin-top: 4%;
 width: 60%;
