@@ -9,6 +9,7 @@ import overcast from './assets/images/overcast.gif';
 import lightRain from './assets/images/light-rain.gif';
 import sunAndClouds from './assets/images/sun-cloud.gif';
 import mostlyCloudly from './assets/images/mostly-cloudly.gif';
+import partlyCloudly from './assets/images/partlyCloudly.gif';
 
 export const animationToStatus = (status) => {
     console.log(status)
@@ -29,6 +30,8 @@ export const animationToStatus = (status) => {
             return lightRain;
         case 'Cloudy':
             return cloudy;
+        case 'Partly cloudy':
+            return partlyCloudly;
         case 'Mostly cloudy':
             return mostlyCloudly;
         case 'A shower':

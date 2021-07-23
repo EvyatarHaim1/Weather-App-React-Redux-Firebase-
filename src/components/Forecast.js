@@ -13,7 +13,7 @@ export default function Forecast() {
 
     useEffect(() => {
         getForecast()
-    }, [])
+    }, [locationKey])
 
     const getForecast = async () => {
         try {
@@ -34,12 +34,12 @@ export default function Forecast() {
         <Div>
             {headlineText}
             <h1>Five-day Forecast</h1>
-            {forecast.map((day) => (
+            {forecast?.map((day) => (
                 <City
-                    dayNum={day}
-                    weatherStatus={day}
-                    weatherC={day}
-                    weatherF={day}
+                    dayNum={day.Day.Date}
+                    weatherStatus={day.Day.Icon}
+                    weatherC={day.Temperature.Maximum.Value}
+                    weatherF={day.Temperature.Maximum.Value}
                 />
             ))}
         </Div>

@@ -8,6 +8,7 @@ import ApiRequests from '../api/apiRequests';
 
 export default function Searchbar() {
 
+    const [input, setInput] = useState('')
     const [city, setCity,] = useState('');
     const [results, setResults] = useState([])
 
@@ -28,11 +29,12 @@ export default function Searchbar() {
     }
 
     const clearResults = () => {
+        setInput('')
         setResults([])
     }
 
     const chooseCity = (city) => {
-        setCity('')
+        setInput('')
         setResults([])
         console.log('this is the chosen city', city.LocalizedName, city.Key)
         dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, key: city.Key } })
@@ -50,7 +52,8 @@ export default function Searchbar() {
             {results.length >= 1 &&
                 <List>
                     {results.map(city => (
-                        <Option onClick={() => chooseCity(city)}>
+                        <Option key={city}
+                            onClick={() => chooseCity(city)}>
                             {city.Country.ID}{'  '}{city.LocalizedName}
                         </Option>
                     ))}

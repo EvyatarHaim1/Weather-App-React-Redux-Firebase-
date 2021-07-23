@@ -29,7 +29,6 @@ export default class ApiRequests {
     }
 
     static async getFiveDaysForecast(locationKey) {
-
         try {
             return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key}&language=en&details=true&metric=true%22`)
                 .then(response => response.json())

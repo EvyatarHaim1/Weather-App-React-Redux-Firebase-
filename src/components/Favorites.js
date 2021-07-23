@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
 import City from './City';
 import { db } from '../firebase';
 
@@ -18,7 +17,6 @@ export default function Favorites() {
                         data: doc.data(),
                     })
                     )))
-
     }, [])
 
     return (
@@ -36,13 +34,12 @@ export default function Favorites() {
                     />
                 ))}
             </FavoritesCitiesContainer>
-
         </Div>
     )
 }
 
 const Div = styled.div`
-width:70%;
+width:85%;
 margin-left: auto;
 margin-right: auto;
 
