@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components';
 import { animationToStatus } from '../animationToStatus';
 
-export default function City() {
+export default function City({ dayNum, weatherStatus, weatherC, weatherF, cityName }) {
 
     return (
         <Div>
-            Tel Aviv
-            <Img src={animationToStatus('Cloudy')} alt="animation" />
-            29.3C° <br />
-            sunny
+            {cityName ? cityName : dayNum}
+            <Img src={animationToStatus(weatherStatus)} alt="animation" />
+            {weatherC}C° <br />
+            {weatherStatus}
         </Div>
     )
 }
@@ -18,6 +18,7 @@ const Div = styled.div`
 display: flex;
 flex-direction: column;
 padding: 2%;
+text-align: center;
 justify-content:center;
 align-items: center;
 /* width:20%; */

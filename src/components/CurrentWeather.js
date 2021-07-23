@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { wheater_app_key, baseURL } from '../keys';
-import sunny from '../assets/images/sunny.gif'
 import emptyHeart from '../assets/images/emptyHeart.png';
 import animHeart from '../assets/images/animHeart.gif';
 import { animationToStatus } from '../animationToStatus';
+import ApiRequests from '../api/apiRequests';
+import { db } from '../firebase';
+import firebase from 'firebase';
 
 export default function CurrentWeather() {
     const [liked, setliked] = useState(false);
@@ -17,34 +18,43 @@ export default function CurrentWeather() {
     const locationKey = useSelector((state) => state.city.locationKey);
 
     useEffect(() => {
+        getCurrentWeatherFromApi()
+    }, [cityName]);
+
+    const getCurrentWeatherFromApi = async () => {
         try {
-            fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key}&language=en&details=true`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data[0].WeatherText);
-                    dispatch({
-                        type: 'GET_CURRENT_WEATHER',
-                        payload: {
-                            tempC: data[0].Temperature.Metric.Value,
-                            tempF: data[0].Temperature.Imperial.Value,
-                            weatherStatus: data[0].WeatherText
-                        }
-                    })
-                });
+            let res = await ApiRequests.getCurrentWeather(locationKey);
+            dispatch({
+                type: 'GET_CURRENT_WEATHER',
+                payload: {
+                    tempC: res[0].Temperature.Metric.Value,
+                    tempF: res[0].Temperature.Imperial.Value,
+                    weatherStatus: res[0].WeatherText
+                }
+            })
         } catch (error) {
             console.log(error)
         }
-    }, [cityName])
+    }
 
     const addToFavorites = () => {
         setliked(!liked)
-        const newFavorite = {
+        db.collection('favorites').add({
             city: cityName,
-            // status: statusAnim,
+            tempStatus: tempStatus,
             currentWeatherC: currentWeatherC,
-            // status: status,
+            currentWeatherF: currentWeatherF,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+
+        const newFavorite = {
+            cityName: cityName,
+            currentWeatherC: currentWeatherC,
+            currentWeatherF: currentWeatherF,
+            tempStatus: tempStatus,
         }
         dispatch({ type: 'ADD_TO_FAVORITES', payload: newFavorite })
+
     }
 
     return (

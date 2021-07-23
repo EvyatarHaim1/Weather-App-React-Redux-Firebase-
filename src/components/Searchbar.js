@@ -1,33 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-import { wheater_app_key, baseURL } from '../keys'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Input } from '@material-ui/core';
+import ApiRequests from '../api/apiRequests';
 
 export default function Searchbar() {
 
     const [city, setCity,] = useState('');
     const [results, setResults] = useState([])
 
-    // const cityName = useSelector((state) => state.city.city);
-    // const locationKey = useSelector((state) => state.city.locationKey);
-
     const dispatch = useDispatch()
 
     useEffect(() => {
+        fetchLocationAutocomplete()
+    }, [city])
+
+    const fetchLocationAutocomplete = async () => {
         try {
-            fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key}&q=${city}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    setResults(data);
-                });
+            let res = await ApiRequests.locationAutocomplete(city);
+            console.log('10 results from api', res)
+            setResults(res);
         } catch (error) {
             console.log(error)
         }
-    }, [city])
+    }
 
     const clearResults = () => {
         setResults([])
@@ -46,10 +44,10 @@ export default function Searchbar() {
                 <SearchIcon />
                 <Input style={{ width: '85%', marginLeft: '2%' }} value={city} disableUnderline={true}
                     placeholder="Select city" onChange={(e) => setCity(e.target.value)} />
-                {city.length >= 1 && city !== 'tel aviv' &&
+                {city.length >= 1 &&
                     <CancelIcon onClick={clearResults} />}
             </Div>
-            {results.length >= 1 && city !== 'tel aviv' &&
+            {results.length >= 1 &&
                 <List>
                     {results.map(city => (
                         <Option onClick={() => chooseCity(city)}>
@@ -72,7 +70,7 @@ margin-top: 2%;
    height: 35px;
    border-radius:20px;
    padding-left:5px;
-   border: 1px solid;
+   border: 1px solid lightgray;
    cursor:pointer;
 :hover {
     opacity: 0.8;

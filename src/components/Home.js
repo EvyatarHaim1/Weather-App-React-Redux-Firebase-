@@ -11,6 +11,7 @@ export default function Home() {
             <Content>
                 <CurrentWeather />
             </Content>
+            <Forecast />
         </Div>
     )
 }

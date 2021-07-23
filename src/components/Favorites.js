@@ -1,45 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import City from './City';
+import { db } from '../firebase';
 
 export default function Favorites() {
 
-    const forcast = useSelector((state) => state.city.forcast)
+    const [allFavorites, setallFavorites,] = useState([])
+
+    useEffect(() => {
+        db.collection('favorites')
+            .orderBy('timestamp', 'desc')
+            .onSnapshot((snapshot) =>
+                setallFavorites(
+                    snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        data: doc.data(),
+                    })
+                    )))
+
+    }, [])
 
     return (
         <Div>
             <H1>Favorites</H1>
             <FavoritesCitiesContainer>
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
-                <City />
+                {allFavorites.map(({ id, data: { city, tempStatus, currentWeatherC, currentWeatherF } }) => (
+                    <City
+                        id={id}
+                        key={id}
+                        cityName={city}
+                        weatherStatus={tempStatus}
+                        weatherC={currentWeatherC}
+                        weatherF={currentWeatherF}
+                    />
+                ))}
             </FavoritesCitiesContainer>
 
-            {/* {forcast != [] && forcast?.map((favorite) => (
-                <Favorite>
-                    {favorite}
-                </Favorite>
-            ))} */}
         </Div>
     )
 }

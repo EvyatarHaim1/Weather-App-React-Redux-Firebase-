@@ -1,13 +1,57 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import ApiRequests from '../api/apiRequests';
+import City from './City';
 
 export default function Forecast() {
 
-    useEffect(() => {
-        fetch('https://dataservice.accuweather.com/forecasts/v1/daily/5day/215854?apikey=GSrq3HIgtByeNTeB4urns6celqnohrsi&language=en&details=true&metric=true%22')
-    }, [])
-    return (
-        <div>
+    const dispatch = useDispatch();
+    const locationKey = useSelector((state) => state.city.locationKey);
+    const headlineText = useSelector((state) => state.city.headlineText);
+    const forecast = useSelector((state) => state.city.forecast);
 
-        </div>
+    useEffect(() => {
+        getForecast()
+    }, [])
+
+    const getForecast = async () => {
+        try {
+            let res = await ApiRequests.getFiveDaysForecast(locationKey);
+            dispatch({
+                type: 'GET_FIVE_DAYS_FORECAST',
+                payload: {
+                    forecast: res.DailyForecasts,
+                    headlineText: res.Headline.Category
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    return (
+        <Div>
+            {headlineText}
+            <h1>Five-day Forecast</h1>
+            {forecast.map((day) => (
+                <City
+                    dayNum={day}
+                    weatherStatus={day}
+                    weatherC={day}
+                    weatherF={day}
+                />
+            ))}
+        </Div>
     )
 }
+
+const Div = styled.div`
+display: flex;
+flex-direction: column;
+text-align: center;
+border-radius:20px;
+border:1px solid lightgray;
+width: 65%;
+height:40%;
+`
