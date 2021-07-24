@@ -15,43 +15,45 @@ export default function City({ dayNum, weatherStatus, weatherC, weatherF, cityNa
   }
 
   return (
-    <>
-      <Div>
-        {cityName ? cityName : dayNum}
-        <Img src={animationToStatus(weatherStatus)} alt="animation" />
-        {weatherC}C° <br />
-        <P>{weatherStatus}</P>
-      </Div>
+    <Div>
+      {cityName ? cityName : dayNum}
+      <Img src={animationToStatus(weatherStatus)} alt="animation" />
+      {weatherC}C° <br />
+      <P>{weatherStatus}</P>
       {cityName && <Icon><DeleteIcon color="primary" onClick={deleteFromFavorites} /></Icon>}
-    </>
-
+    </Div>
   )
 }
 
 const Div = styled.div`
 display: flex;
 flex-direction: column;
-padding: 2%;
+padding-top: 2%;
 text-align: center;
 justify-content:center;
 align-items: center;
-/* width:20%; */
+width:30%;
 height:30%;
 border: 2px solid lightgray;
+margin-bottom: 3%;
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 25%;
+  width: 30%;
 :hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}`
+}
+@media (max-width: 700px){
+  width:100%;
+height:100%;
+}
+
+`
 
 const Img = styled.img`
 width:20%;
 `
 const Icon = styled.div`
-position: relative;
-top:-2.5rem;
-right:6%;
+display: flex;
 :hover{
   cursor: pointer;
 }

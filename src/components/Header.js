@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -27,16 +28,25 @@ export default function ButtonAppBar() {
 
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static" color="default">
-                <Toolbar className={classes.toolbar}>
-                    <Typography variant="h6" className={classes.title}>
-                        Herolo Weather Task
-                    </Typography>
-                    <Link to="/"> <Button color="inherit"><HomeIcon /></Button></Link>
-                    <Link to="/favorites"> <Button color="primary"><FavoriteIcon /></Button></Link>
-                </Toolbar>
-            </AppBar>
-        </div>
+        <Div>
+            <div className={classes.root}>
+                <AppBar position="static" color="default">
+                    <Toolbar className={classes.toolbar}>
+                        <Typography variant="h6" className={classes.title}>
+                            Herolo Weather Task - Evyatar Haim
+                        </Typography>
+                        <Link to="/"> <Button color="inherit"><HomeIcon /></Button></Link>
+                        <Link to="/favorites"> <Button color="primary"><FavoriteIcon /></Button></Link>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        </Div>
     );
 }
+
+const Div = styled.div`
+@media (max-width: 480px) {
+    display: none;
+  }
+`
+

@@ -29,5 +29,5 @@ border: 2px solid lightgray;
 border-radius: 20px;
 padding: 2%;
 margin-top: 4%;
-width: 60%;
+width: 65%;
 `

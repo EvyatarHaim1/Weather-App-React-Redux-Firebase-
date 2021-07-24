@@ -43,10 +43,9 @@ export default function Favorites() {
 }
 
 const Div = styled.div`
-width:85%;
+width:100%;
 margin-left: auto;
 margin-right: auto;
-
 
 `
 const H1 = styled.h1`
@@ -54,10 +53,17 @@ text-align:center;
 `
 const FavoritesCitiesContainer = styled.div`
 display: flex;
-flex: 1 1 1;
 flex-wrap: wrap;
 flex-direction:row;
-/* width:20%; */
 justify-content:center;
 align-items:center;
+
+@media (max-width: 480px){
+    flex-direction: column;
+}
+@media (max-width: 700px){
+    width:60%;
+    margin-left: auto;
+margin-right: auto;
+}
 `

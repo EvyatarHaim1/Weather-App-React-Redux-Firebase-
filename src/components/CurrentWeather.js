@@ -89,7 +89,7 @@ padding-left: 3%;
 padding-right: 3%;
 border: 1px solid lightgray;
 border-radius:20px;
-width:90%;
+width:100%;
 text-align:center;
 `
 const SectionL = styled.div`

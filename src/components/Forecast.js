@@ -37,7 +37,7 @@ export default function Forecast() {
     return (
         <Div>
             {headlineText}
-            <h1>Five-day Forecast</h1>
+            <H1>Five-day Forecast</H1>
             <ForecastContainer>
                 {forecast?.map((day) => (
                     <City
@@ -55,17 +55,40 @@ export default function Forecast() {
 
 const Div = styled.div`
 display: flex;
+padding-left: 1%;
+padding-right: 1%;
 flex-direction: column;
 text-align: center;
 border-radius:20px;
 border:1px solid lightgray;
 width: 65%;
-/* height:40%; */
-/* @media (max-width: 768px) {
-    flex-direction: column;
-  } */
+margin-top: 3%;
+margin-bottom: 10%;
+@media (max-width: 700px) {
+    display: block;
+  }
 `
 const ForecastContainer = styled.div`
 display: flex;
 flex-direction: row;
+margin-bottom: 10%;
+@media (max-width: 700px) {
+    display: grid;
+    grid-template-areas: "x x "
+                         "x x "
+                         "x x ";
+    padding-top: 3%;
+  }
+`
+const H1 = styled.h1`
+@media (max-width: 600px) {
+    font-size: 20px;
+  }
+
+@media(max-width: 400px) {
+    font-size: 15px;
+}
+@media(max-width: 300px) {
+    font-size: 10px;
+}
 `

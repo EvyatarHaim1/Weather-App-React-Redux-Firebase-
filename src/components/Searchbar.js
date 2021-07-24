@@ -78,6 +78,10 @@ margin-top: 2%;
 :hover {
     opacity: 0.8;
 }
+@media (max-width: 800px) {
+    width:60%;
+    margin-top: 5%;
+  }
 `
 const List = styled.div`
    border-radius:20px;
