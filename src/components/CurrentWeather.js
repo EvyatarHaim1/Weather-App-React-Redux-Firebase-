@@ -16,11 +16,36 @@ export default function CurrentWeather() {
     const currentWeatherF = useSelector((state) => state.city.current_Weather_Imperial);
     const tempStatus = useSelector((state) => state.city.weatherStatus);
     const locationKey = useSelector((state) => state.city.locationKey);
-    const allFavorites = useSelector((state) => state.favorites.favorites);
+    const [allFavorites, setallFavorites,] = useState([]);
+    const [id, setId] = useState('');
 
     useEffect(() => {
         getCurrentWeatherFromApi()
+        checkIfOnFavorites()
     }, [cityName]);
+
+    useEffect(() => {
+        db.collection('favorites')
+            .orderBy('timestamp', 'desc')
+            .onSnapshot((snapshot) =>
+                setallFavorites(
+                    snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        data: doc.data(),
+                    })
+                    )))
+        console.log(allFavorites);
+        dispatch({ type: 'FETCH_ALL_FAVORITES', payload: allFavorites });
+    }, [])
+
+    const checkIfOnFavorites = () => {
+        allFavorites.map(({ data, id }) => {
+            if (data.city === cityName) {
+                setliked(true);
+                setId(id);
+            }
+        })
+    }
 
     const getCurrentWeatherFromApi = async () => {
         try {
@@ -38,27 +63,32 @@ export default function CurrentWeather() {
         }
     }
 
-    const addToFavorites = () => {
-        setliked(!liked)
-        db.collection('favorites').add({
-            city: cityName,
-            tempStatus: tempStatus,
-            currentWeatherC: currentWeatherC,
-            currentWeatherF: currentWeatherF,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        });
+    const addORRemoveToFavorites = () => {
+        if (!liked) {
+            setliked(!liked)
+            db.collection('favorites').add({
+                city: cityName,
+                tempStatus: tempStatus,
+                currentWeatherC: currentWeatherC,
+                currentWeatherF: currentWeatherF,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            });
 
-        const newFavorite = {
-            cityName: cityName,
-            currentWeatherC: currentWeatherC,
-            currentWeatherF: currentWeatherF,
-            tempStatus: tempStatus,
+            const newFavorite = {
+                cityName: cityName,
+                currentWeatherC: currentWeatherC,
+                currentWeatherF: currentWeatherF,
+                tempStatus: tempStatus,
+            }
+            dispatch({ type: 'ADD_TO_FAVORITES', payload: newFavorite })
+        } else {
+            setliked(!liked)
+            db.collection("favorites").doc(id).delete().then(() => {
+                console.log("Document successfully deleted!");
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            });
         }
-        dispatch({ type: 'ADD_TO_FAVORITES', payload: newFavorite })
-    }
-
-    const checkIfOnFavorites = () => {
-        console.log(allFavorites)
     }
 
     return (
@@ -75,7 +105,7 @@ export default function CurrentWeather() {
                 </SectionL>
                 <HeartImg
                     src={!liked ? emptyHeart : animHeart}
-                    onClick={() => addToFavorites()}
+                    onClick={() => addORRemoveToFavorites()}
                     alt="emptyHeart"
                 />
             </Div>
