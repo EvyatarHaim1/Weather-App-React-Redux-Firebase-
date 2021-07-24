@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux'
 import City from './City';
 import { db } from '../firebase';
 
 export default function Favorites() {
 
+    const dispatch = useDispatch();
     const [allFavorites, setallFavorites,] = useState([])
 
     useEffect(() => {
@@ -17,6 +19,8 @@ export default function Favorites() {
                         data: doc.data(),
                     })
                     )))
+        console.log(allFavorites);
+        dispatch({ type: 'FETCH_ALL_FAVORITES', payload: allFavorites });
     }, [])
 
     return (

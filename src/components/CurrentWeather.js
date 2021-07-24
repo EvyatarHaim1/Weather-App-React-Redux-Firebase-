@@ -16,6 +16,7 @@ export default function CurrentWeather() {
     const currentWeatherF = useSelector((state) => state.city.current_Weather_Imperial);
     const tempStatus = useSelector((state) => state.city.weatherStatus);
     const locationKey = useSelector((state) => state.city.locationKey);
+    const allFavorites = useSelector((state) => state.favorites.favorites);
 
     useEffect(() => {
         getCurrentWeatherFromApi()
@@ -54,7 +55,10 @@ export default function CurrentWeather() {
             tempStatus: tempStatus,
         }
         dispatch({ type: 'ADD_TO_FAVORITES', payload: newFavorite })
+    }
 
+    const checkIfOnFavorites = () => {
+        console.log(allFavorites)
     }
 
     return (
@@ -62,7 +66,7 @@ export default function CurrentWeather() {
             <SectionL>
                 <Img src={animationToStatus(tempStatus)} alt="animation" />
                 <Content>
-                    {cityName} <br />
+                    {cityName.toUpperCase()} <br />
                     {currentWeatherC} {''}C° <br />
                     {tempStatus}
                 </Content>
@@ -94,7 +98,7 @@ display: flex;
 align-items: center;
 `
 const Img = styled.img`
-width:10%;
+width:20%;
 margin-right: 3%;
 `
 const HeartImg = styled.img`
