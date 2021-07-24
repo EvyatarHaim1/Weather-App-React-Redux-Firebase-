@@ -62,21 +62,24 @@ export default function CurrentWeather() {
     }
 
     return (
-        <Div>
-            <SectionL>
-                <Img src={animationToStatus(tempStatus)} alt="animation" />
-                <Content>
-                    {cityName.toUpperCase()} <br />
-                    {currentWeatherC} {''}C° <br />
-                    {tempStatus}
-                </Content>
-            </SectionL>
-            <HeartImg
-                src={!liked ? emptyHeart : animHeart}
-                onClick={() => addToFavorites()}
-                alt="emptyHeart"
-            />
-        </Div>
+        <>
+            <H2>Current Weather</H2>
+            <Div>
+                <SectionL>
+                    <Img src={animationToStatus(tempStatus)} alt="animation" />
+                    <Content>
+                        {cityName.toUpperCase()} <br />
+                        {currentWeatherC} {''}C° <br />
+                        {tempStatus}
+                    </Content>
+                </SectionL>
+                <HeartImg
+                    src={!liked ? emptyHeart : animHeart}
+                    onClick={() => addToFavorites()}
+                    alt="emptyHeart"
+                />
+            </Div>
+        </>
     )
 }
 
@@ -110,5 +113,20 @@ width:6%;
 const Content = styled.div`
 display: flex;
 flex-direction:column;
+`
+const H2 = styled.h2`
+@media (max-width: 600px) {
+    font-size: 20px;
+  }
+
+@media(max-width: 400px) {
+    font-size: 15px;
+}
+@media(max-width: 300px) {
+    font-size: 10px;
+}
+`
+const P = styled.p`
+font-size:20px;
 `
 

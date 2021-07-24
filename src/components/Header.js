@@ -33,7 +33,7 @@ export default function ButtonAppBar() {
                 <AppBar position="static" color="default">
                     <Toolbar className={classes.toolbar}>
                         <Typography variant="h6" className={classes.title}>
-                            Herolo Weather Task - Evyatar Haim
+                            Weather App - Evyatar Haim
                         </Typography>
                         <Link to="/"> <Button color="inherit"><HomeIcon /></Button></Link>
                         <Link to="/favorites"> <Button color="primary"><FavoriteIcon /></Button></Link>

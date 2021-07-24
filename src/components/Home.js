@@ -23,11 +23,13 @@ flex-direction: column;
     align-items:center;
 `
 const Content = styled.div`
-display: flex;
 justify-content:center;
+text-align:center;
 border: 2px solid lightgray;
 border-radius: 20px;
-padding: 2%;
+padding-left: 2%;
+padding-right: 2%;
+padding-bottom: 1%;
 margin-top: 4%;
 width: 65%;
 `

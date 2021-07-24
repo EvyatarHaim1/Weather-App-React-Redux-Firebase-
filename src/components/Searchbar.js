@@ -67,6 +67,7 @@ const Div = styled.div`
 display: flex;
 flex-direction: row;
 margin-top: 2%;
+margin-bottom: -3%;
    align-items: center;
    background-color:whitesmoke;
    width:30%;
