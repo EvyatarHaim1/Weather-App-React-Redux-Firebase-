@@ -60,6 +60,9 @@ border-radius:20px;
 border:1px solid lightgray;
 width: 65%;
 /* height:40%; */
+/* @media (max-width: 768px) {
+    flex-direction: column;
+  } */
 `
 const ForecastContainer = styled.div`
 display: flex;

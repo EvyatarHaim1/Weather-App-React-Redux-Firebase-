@@ -20,7 +20,7 @@ export default function City({ dayNum, weatherStatus, weatherC, weatherF, cityNa
         {cityName ? cityName : dayNum}
         <Img src={animationToStatus(weatherStatus)} alt="animation" />
         {weatherC}C° <br />
-        {weatherStatus}
+        <P>{weatherStatus}</P>
       </Div>
       {cityName && <Icon><DeleteIcon color="primary" onClick={deleteFromFavorites} /></Icon>}
     </>
@@ -55,4 +55,7 @@ right:6%;
 :hover{
   cursor: pointer;
 }
+`
+const P = styled.p`
+font-size: 12px;
 `

@@ -10,6 +10,13 @@ import lightRain from './assets/images/light-rain.gif';
 import sunAndClouds from './assets/images/sun-cloud.gif';
 import mostlyCloudly from './assets/images/mostly-cloudly.gif';
 import partlyCloudly from './assets/images/partlyCloudly.gif';
+import thunderstorm from './assets/images/thunderstorm.gif';
+import stormshowersday from './assets/images/stormshowersday.gif';
+import hazySunshine from './assets/images/hazySunshine.gif';
+import IntermittentClouds from './assets/images/IntermittentClouds.gif';
+import MostlyCloudyShowers from './assets/images/MostlyCloudyShowers.gif';
+import Showers from './assets/images/Showers.gif';
+import defaultGif from './assets/images/defaultGif.gif';
 
 export const animationToStatus = (status) => {
     console.log(status)
@@ -38,7 +45,19 @@ export const animationToStatus = (status) => {
             return rainy;
         case 'snow':
             return snow;
+        case 'Partly sunny w/ t-storms':
+            return stormshowersday;
+        case 'Thunderstorms':
+            return thunderstorm;
+        case 'Hazy sunshine':
+            return hazySunshine;
+        case 'Intermittent clouds':
+            return IntermittentClouds;
+        case 'Mostly cloudy w/ showers':
+            return MostlyCloudyShowers;
+        case 'Showers':
+            return Showers;
         default:
-            return;
+            return defaultGif;
     }
 }
