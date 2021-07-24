@@ -41,6 +41,7 @@ export default function Forecast() {
             <ForecastContainer>
                 {forecast?.map((day) => (
                     <City
+                        key={day.Date}
                         dayNum={days[new Date(day.Date).getDay()]}
                         weatherStatus={day.Day.IconPhrase}
                         weatherC={day.Temperature.Maximum.Value} // convert to C
