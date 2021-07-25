@@ -65,6 +65,10 @@ margin-bottom: 5%;
 @media (max-width: 700px) {
     display: block;
   }
+  @media (max-width: 960px) and (min-width: 700px){
+height:120%;
+padding-bottom: 5%;
+  }
 `
 const ForecastContainer = styled.div`
 display: flex;
@@ -77,7 +81,11 @@ flex-direction: row;
     padding-top: 3%; 
     margin-bottom: 10%;
   }
+  @media (max-width: 960px) and (min-width: 700px){
+padding-bottom: 5%;
+}
 `
+
 const H2 = styled.h2`
 @media (max-width: 600px) {
     font-size: 20px;
