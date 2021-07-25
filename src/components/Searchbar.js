@@ -92,7 +92,7 @@ const List = styled.div`
    background-color:whitesmoke;
    margin-top: 3%;
    @media (max-width: 800px) {
-    width:70%;
+    width:60%;
     margin-top: 5%;
   }
 `
