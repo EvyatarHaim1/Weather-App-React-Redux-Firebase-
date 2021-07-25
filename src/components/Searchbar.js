@@ -48,7 +48,6 @@ export default function Searchbar() {
 
     return (
         <>
-            {errorMessage && <ToastContainer />}
             <Div style={{ backgroundColor: darkmode ? 'rgb(120, 120, 120)' : 'whitesmoke' }}>
                 <SearchIcon />
                 <Input style={{ width: '85%', marginLeft: '2%' }}
@@ -69,6 +68,7 @@ export default function Searchbar() {
                     ))}
                 </List>
             }
+            {errorMessage && <ToastContainer />}
         </>
     )
 }
