@@ -2,7 +2,7 @@ import { CONVERT_TO_FAHRENHEIT, SWITCH_TO_DARKMODE } from "./setting.action";
 
 const initialState = {
     unit: false,
-    darkmode: false,
+    darkmode: true,
 }
 
 export default (state = initialState, action) => {
