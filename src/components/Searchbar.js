@@ -5,6 +5,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Input } from '@material-ui/core';
 import ApiRequests from '../api/apiRequests';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Searchbar() {
 
@@ -13,15 +15,18 @@ export default function Searchbar() {
 
     const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     fetchLocationAutocomplete()
-    // }, [city])
+    useEffect(() => {
+        fetchLocationAutocomplete()
+    }, [city])
+
+    const notify = () => toast("You reached the maximum requests");
 
     const fetchLocationAutocomplete = async () => {
         try {
             let res = await ApiRequests.locationAutocomplete(city);
             setResults(res);
         } catch (error) {
+            notify()
             console.log(error)
         }
     }

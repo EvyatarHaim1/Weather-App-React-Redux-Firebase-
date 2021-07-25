@@ -1,10 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 import { animationToStatus } from '../animationToStatus';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { db } from '../firebase';
 
 export default function City({ dayNum, weatherStatus, weatherC, weatherF, cityName, id }) {
+
+  const unit = useSelector((state) => state.setting.unit);
 
   const deleteFromFavorites = () => {
     db.collection("favorites").doc(id).delete().then(() => {
@@ -14,11 +17,16 @@ export default function City({ dayNum, weatherStatus, weatherC, weatherF, cityNa
     });
   }
 
+  function convertToF(celsius) {
+    let fahrenheit = celsius * 9 / 5 + 32
+    return fahrenheit;
+  }
+
   return (
     <Div>
       {cityName ? cityName : dayNum}
       <Img src={animationToStatus(weatherStatus)} alt="animation" />
-      {weatherC}C° <br />
+      {!unit ? `${weatherC} C°` : `${convertToF(weatherC)} °F`}< br />
       <P>{weatherStatus}</P>
       {cityName && <Icon><DeleteIcon color="primary" onClick={deleteFromFavorites} /></Icon>}
     </Div>

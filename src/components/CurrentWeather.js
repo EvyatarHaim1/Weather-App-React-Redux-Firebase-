@@ -16,6 +16,7 @@ export default function CurrentWeather() {
     const currentWeatherF = useSelector((state) => state.city.current_Weather_Imperial);
     const tempStatus = useSelector((state) => state.city.weatherStatus);
     const locationKey = useSelector((state) => state.city.locationKey);
+    const convertUnit = useSelector((state) => state.setting.unit);
     const [allFavorites, setallFavorites,] = useState([]);
     const [id, setId] = useState('');
 
@@ -98,7 +99,8 @@ export default function CurrentWeather() {
                     <Img src={animationToStatus(tempStatus)} alt="animation" />
                     <Content>
                         {cityName.toUpperCase()} <br />
-                        {currentWeatherC} {''}C° <br />
+                        {convertUnit ? currentWeatherF : currentWeatherC} {''}
+                        {convertUnit ? '°F' : 'C°'} <br />
                         {tempStatus}
                     </Content>
                 </SectionL>

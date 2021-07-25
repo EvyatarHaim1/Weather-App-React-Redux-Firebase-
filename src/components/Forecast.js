@@ -74,12 +74,14 @@ const ForecastContainer = styled.div`
 display: flex;
 flex-direction: row;
 @media (max-width: 700px) {
-    display: grid;
+    /* display: grid;
     grid-template-areas: "x x "
                          "x x "
                          "x x ";
     padding-top: 3%; 
-    margin-bottom: 10%;
+    margin-bottom: 10%; */
+    display: flex;
+    flex-direction: column;
   }
   @media (max-width: 960px) and (min-width: 700px){
 padding-bottom: 5%;
