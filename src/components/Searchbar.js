@@ -13,9 +13,9 @@ export default function Searchbar() {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        fetchLocationAutocomplete()
-    }, [city])
+    // useEffect(() => {
+    //     fetchLocationAutocomplete()
+    // }, [city])
 
     const fetchLocationAutocomplete = async () => {
         try {
