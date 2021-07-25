@@ -58,9 +58,9 @@ export default function Searchbar() {
                     <CancelIcon onClick={clearResults} />}
             </Div>
             {results.length >= 1 &&
-                <List style={{ backgroundColor: darkmode ? 'black' : 'whitesmoke' }}>
+                <List style={{ backgroundColor: darkmode ? 'rgb(60, 60, 60)' : 'whitesmoke' }}>
                     {results.map(city => (
-                        <Option key={city}
+                        <Option props={darkmode} key={city}
                             onClick={() => chooseCity(city)}>
                             {city.Country.ID}{'  '}{city.LocalizedName}
                         </Option>
@@ -107,7 +107,7 @@ const Option = styled.p`
 padding-bottom: 2%;
 padding-top: -2%;
 :hover{
-    background-color:lightgray;
+    background-color:${props => props.darkmode ? '#505050' : 'lightgray'};
     cursor: pointer;
 }
 `
