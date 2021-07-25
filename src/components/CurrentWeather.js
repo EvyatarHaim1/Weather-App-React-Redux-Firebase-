@@ -7,6 +7,7 @@ import { animationToStatus } from '../animationToStatus';
 import ApiRequests from '../api/apiRequests';
 import { db } from '../firebase';
 import firebase from 'firebase';
+import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -110,6 +111,7 @@ export default function CurrentWeather() {
                         {tempStatus}
                     </Content>
                 </SectionL>
+                <LocationSearchingIcon color="primary" size="20" />
                 <HeartImg
                     src={!liked ? emptyHeart : animHeart}
                     onClick={() => addORRemoveToFavorites()}
