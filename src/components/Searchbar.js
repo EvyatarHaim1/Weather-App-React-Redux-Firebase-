@@ -8,7 +8,6 @@ import ApiRequests from '../api/apiRequests';
 
 export default function Searchbar() {
 
-    const [input, setInput] = useState('')
     const [city, setCity,] = useState('');
     const [results, setResults] = useState([])
 
@@ -28,13 +27,13 @@ export default function Searchbar() {
     }
 
     const clearResults = () => {
-        setInput('')
-        setResults([])
+        setCity('');
+        setResults([]);
     }
 
     const chooseCity = (city) => {
-        setInput('')
-        setResults([])
+        setCity('');
+        setResults([]);
         dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, key: city.Key } })
     }
 
@@ -44,8 +43,8 @@ export default function Searchbar() {
                 <SearchIcon />
                 <Input style={{ width: '85%', marginLeft: '2%' }}
                     disableUnderline={true}
-                    inputRef={input}
                     placeholder="Select city"
+                    value={city}
                     onChange={(e) => setCity(e.target.value)} />
                 {city.length >= 1 &&
                     <CancelIcon onClick={clearResults} />}
