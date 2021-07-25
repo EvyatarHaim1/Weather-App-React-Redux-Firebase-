@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Input } from '@material-ui/core';
@@ -12,7 +12,7 @@ export default function Searchbar() {
 
     const [city, setCity,] = useState('');
     const [results, setResults] = useState([])
-
+    const darkmode = useSelector((state) => state.setting.darkmode)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -57,7 +57,7 @@ export default function Searchbar() {
                     <CancelIcon onClick={clearResults} />}
             </Div>
             {results.length >= 1 &&
-                <List>
+                <List style={{ backgroundColor: darkmode ? 'darkgray' : 'whitesmoke' }}>
                     {results.map(city => (
                         <Option key={city}
                             onClick={() => chooseCity(city)}>
@@ -96,7 +96,6 @@ const List = styled.div`
    border: 1px solid;
    width:30%;
    text-align:center;
-   background-color:whitesmoke;
    margin-top: 3%;
    @media (max-width: 800px) {
     width:60%;
