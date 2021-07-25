@@ -91,6 +91,10 @@ const List = styled.div`
    text-align:center;
    background-color:whitesmoke;
    margin-top: 3%;
+   @media (max-width: 800px) {
+    width:70%;
+    margin-top: 5%;
+  }
 `
 const Option = styled.p`
 padding-bottom: 2%;
