@@ -174,8 +174,8 @@ width:6%;
 :hover{
     cursor:pointer;
 }
-@media(max-width: 300px) {
-    width:50%;
+@media(max-width: 600px) {
+    width:20%;
 }
 `
 
@@ -204,7 +204,7 @@ margin-bottom: 2.5%;
 :hover{
     cursor:pointer;
 }
-@media(max-width: 300px) {
-    width:50%;
+@media(max-width: 600px) {
+    width:30%;
 }
 `
