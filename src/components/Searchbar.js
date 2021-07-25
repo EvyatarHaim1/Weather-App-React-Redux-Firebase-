@@ -57,7 +57,7 @@ export default function Searchbar() {
                     <CancelIcon onClick={clearResults} />}
             </Div>
             {results.length >= 1 &&
-                <List style={{ backgroundColor: darkmode ? 'darkgray' : 'whitesmoke' }}>
+                <List style={{ backgroundColor: darkmode ? 'black' : 'whitesmoke' }}>
                     {results.map(city => (
                         <Option key={city}
                             onClick={() => chooseCity(city)}>
