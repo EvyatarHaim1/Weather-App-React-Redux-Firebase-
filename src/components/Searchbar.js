@@ -107,7 +107,7 @@ const Option = styled.p`
 padding-bottom: 2%;
 padding-top: -2%;
 :hover{
-   background-color:whitesmoke;
+   background-color:lightgray;
     ${({ active }) => active && `
     background: '#505050';
   `}
