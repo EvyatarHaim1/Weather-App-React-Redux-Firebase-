@@ -12,6 +12,7 @@ export default function Searchbar() {
 
     const [city, setCity,] = useState('');
     const [results, setResults] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const dispatch = useDispatch();
     const darkmode = useSelector((state) => state.setting.darkmode);
@@ -28,8 +29,9 @@ export default function Searchbar() {
             console.log(res)
             setResults(res);
         } catch (error) {
-            notify()
             console.log(error)
+            setErrorMessage(error)
+            notify()
         }
     }
 
@@ -46,7 +48,7 @@ export default function Searchbar() {
 
     return (
         <>
-            <ToastContainer />
+            {errorMessage && <ToastContainer />}
             <Div style={{ backgroundColor: darkmode ? 'rgb(120, 120, 120)' : 'whitesmoke' }}>
                 <SearchIcon />
                 <Input style={{ width: '85%', marginLeft: '2%' }}
