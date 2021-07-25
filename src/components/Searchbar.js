@@ -60,7 +60,7 @@ export default function Searchbar() {
             {results.length >= 1 &&
                 <List style={{ backgroundColor: darkmode ? 'rgb(60, 60, 60)' : 'whitesmoke' }}>
                     {results.map(city => (
-                        <Option props={darkmode} key={city}
+                        <Option active={darkmode} key={city}
                             onClick={() => chooseCity(city)}>
                             {city.Country.ID}{'  '}{city.LocalizedName}
                         </Option>
@@ -107,7 +107,10 @@ const Option = styled.p`
 padding-bottom: 2%;
 padding-top: -2%;
 :hover{
-    background-color:${props => props.darkmode ? '#505050' : 'lightgray'};
+   background-color:whitesmoke;
+    ${({ active }) => active && `
+    background: '#505050';
+  `}
     cursor: pointer;
 }
 `
