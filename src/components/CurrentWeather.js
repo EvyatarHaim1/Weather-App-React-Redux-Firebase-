@@ -173,7 +173,11 @@ const HeartImg = styled.img`
 width:6%;
 :hover{
     cursor:pointer;
-}`
+}
+@media(max-width: 300px) {
+    width:50%;
+}
+`
 
 const Content = styled.div`
 display: flex;
@@ -199,4 +203,8 @@ width:10%;
 margin-bottom: 2.5%;
 :hover{
     cursor:pointer;
-}`
+}
+@media(max-width: 300px) {
+    width:50%;
+}
+`
