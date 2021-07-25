@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ApiRequests from '../api/apiRequests';
 import City from './City';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Forecast() {
 
@@ -17,6 +19,8 @@ export default function Forecast() {
         getForecast()
     }, [locationKey])
 
+    const notify = () => toast("Something went wrong with fetching five days forecast");
+
     const getForecast = async () => {
         try {
             let res = await ApiRequests.getFiveDaysForecast(locationKey);
@@ -28,6 +32,7 @@ export default function Forecast() {
                 }
             })
         } catch (error) {
+            notify()
             console.log(error)
         }
     }
@@ -36,6 +41,7 @@ export default function Forecast() {
 
     return (
         <Div>
+            <ToastContainer />
             <H2>Five-day Forecast</H2>
             <P> {headlineText}</P>
             <ForecastContainer>

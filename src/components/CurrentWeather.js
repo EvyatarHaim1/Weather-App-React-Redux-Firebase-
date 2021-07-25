@@ -49,6 +49,8 @@ export default function CurrentWeather() {
         })
     }
 
+    const notify = () => toast("Something went wrong with fetching current weather");
+
     const getCurrentWeatherFromApi = async () => {
         try {
             let res = await ApiRequests.getCurrentWeather(locationKey);
@@ -61,12 +63,10 @@ export default function CurrentWeather() {
                 }
             })
         } catch (error) {
+            notify()
             console.log(error)
         }
     }
-
-    const notify = () => toast("Something went wrong with fetching current weather");
-
 
     const addORRemoveToFavorites = () => {
         if (!liked) {
