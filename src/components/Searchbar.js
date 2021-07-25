@@ -43,6 +43,8 @@ export default function Searchbar() {
         dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, key: city.Key } })
     }
 
+    console.log('searchhhhhhh', darkmode)
+
     return (
         <>
             <ToastContainer />
