@@ -196,6 +196,7 @@ font-size:20px;
 `
 const LocationImg = styled.img`
 width:10%;
+margin-bottom: 2.5%;
 :hover{
     cursor:pointer;
 }`
