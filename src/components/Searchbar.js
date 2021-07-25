@@ -31,7 +31,7 @@ export default function Searchbar() {
         } catch (error) {
             console.log(error)
             setErrorMessage(error)
-            notify()
+            console.log('im the errorrrrr')
         }
     }
 
