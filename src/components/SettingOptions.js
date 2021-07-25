@@ -18,7 +18,7 @@ export default function Switches() {
 
     const handleChangeUnit = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
-        dispatch({ type: 'CONVERT_TO_FAHRENHEIT', payload: !state.checkedUnit })
+        dispatch({ type: 'CONVERT_TO_FAHRENHEIT', payload: !unit })
     };
 
     const handleChangeDarkMode = (event) => {
