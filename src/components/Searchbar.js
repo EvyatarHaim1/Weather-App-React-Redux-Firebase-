@@ -21,7 +21,6 @@ export default function Searchbar() {
     const fetchLocationAutocomplete = async () => {
         try {
             let res = await ApiRequests.locationAutocomplete(city);
-            console.log('10 results from api', res)
             setResults(res);
         } catch (error) {
             console.log(error)
@@ -36,7 +35,6 @@ export default function Searchbar() {
     const chooseCity = (city) => {
         setInput('')
         setResults([])
-        console.log('this is the chosen city', city.LocalizedName, city.Key)
         dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, key: city.Key } })
     }
 
@@ -44,8 +42,11 @@ export default function Searchbar() {
         <>
             <Div>
                 <SearchIcon />
-                <Input style={{ width: '85%', marginLeft: '2%' }} value={city} disableUnderline={true}
-                    placeholder="Select city" onChange={(e) => setCity(e.target.value)} />
+                <Input style={{ width: '85%', marginLeft: '2%' }}
+                    disableUnderline={true}
+                    inputRef={input}
+                    placeholder="Select city"
+                    onChange={(e) => setCity(e.target.value)} />
                 {city.length >= 1 &&
                     <CancelIcon onClick={clearResults} />}
             </Div>
@@ -90,6 +91,7 @@ const List = styled.div`
    width:30%;
    text-align:center;
    background-color:whitesmoke;
+   margin-top: 3%;
 `
 const Option = styled.p`
 padding-bottom: 2%;

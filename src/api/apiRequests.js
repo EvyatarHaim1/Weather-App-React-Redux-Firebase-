@@ -7,7 +7,6 @@ export default class ApiRequests {
             return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key}&q=${city}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     return data;
                 });
         } catch (error) {
@@ -15,7 +14,6 @@ export default class ApiRequests {
                 return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key2}&q=${city}`)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
                         return data;
                     });
             } catch (error) {
@@ -29,7 +27,6 @@ export default class ApiRequests {
             return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key}&language=en&details=true`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     return data;
                 });
         } catch (error) {
@@ -37,7 +34,6 @@ export default class ApiRequests {
                 return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key2}&language=en&details=true`)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
                         return data;
                     });
             } catch (error) {
@@ -51,7 +47,6 @@ export default class ApiRequests {
             return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key}&language=en&details=true&metric=true%22`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     return data;
                 });
         } catch (error) {
@@ -59,7 +54,6 @@ export default class ApiRequests {
                 return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key2}&language=en&details=true&metric=true%22`)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
                         return data;
                     });
             } catch (error) {

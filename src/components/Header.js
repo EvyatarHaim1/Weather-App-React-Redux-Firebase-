@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
+import blue from '@material-ui/core/colors/blue';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -8,6 +10,12 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Link } from 'react-router-dom';
+
+const theme = createTheme({
+    palette: {
+        primary: blue,
+    },
+});
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,7 +43,9 @@ export default function ButtonAppBar() {
                         <Typography variant="h6" className={classes.title}>
                             Weather App - Evyatar Haim
                         </Typography>
-                        <Link to="/"> <Button color="inherit"><HomeIcon /></Button></Link>
+                        <Link to="/"> <Button color="primary">
+                            <HomeIcon />
+                        </Button></Link>
                         <Link to="/favorites"> <Button color="primary"><FavoriteIcon /></Button></Link>
                     </Toolbar>
                 </AppBar>

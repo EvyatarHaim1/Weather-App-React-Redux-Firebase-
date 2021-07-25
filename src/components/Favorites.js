@@ -19,7 +19,6 @@ export default function Favorites() {
                         data: doc.data(),
                     })
                     )))
-        console.log(allFavorites);
         dispatch({ type: 'FETCH_ALL_FAVORITES', payload: allFavorites });
     }, [])
 

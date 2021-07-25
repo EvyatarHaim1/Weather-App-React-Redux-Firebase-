@@ -34,7 +34,6 @@ export default function CurrentWeather() {
                         data: doc.data(),
                     })
                     )))
-        console.log(allFavorites);
         dispatch({ type: 'FETCH_ALL_FAVORITES', payload: allFavorites });
     }, [])
 

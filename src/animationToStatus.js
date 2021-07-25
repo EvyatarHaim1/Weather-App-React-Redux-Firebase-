@@ -19,7 +19,6 @@ import Showers from './assets/images/Showers.gif';
 import defaultGif from './assets/images/defaultGif.gif';
 
 export const animationToStatus = (status) => {
-    console.log(status)
     switch (status) {
         case 'Sunny':
             return sunny;
