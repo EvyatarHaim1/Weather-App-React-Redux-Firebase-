@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import emptyHeart from '../assets/images/emptyHeart.png';
+import location from '../assets/images/location.gif';
 import animHeart from '../assets/images/animHeart.gif';
 import { animationToStatus } from '../animationToStatus';
 import ApiRequests from '../api/apiRequests';
@@ -97,6 +98,26 @@ export default function CurrentWeather() {
         }
     }
 
+    const getUserLocationFromApi = async (lat, long) => {
+        try {
+            let res = await ApiRequests.getUserLocation(lat, long);
+            let placeName = res.LocalizedName;
+
+        } catch (error) {
+            notify()
+            console.log(error)
+        }
+    }
+
+    const getUserLocation = () => {
+        navigator.geolocation.getCurrentPosition((pos) => {
+            let lat = pos.coords.latitude;
+            let long = pos.coords.longitude;
+            dispatch({ type: 'GET_USER_LOCATION', payload: { lat, long } })
+            getUserLocationFromApi(lat, long)
+        })
+    }
+
     return (
         <>
             <ToastContainer />
@@ -111,7 +132,11 @@ export default function CurrentWeather() {
                         {tempStatus}
                     </Content>
                 </SectionL>
-                <LocationSearchingIcon color="primary" size="20" />
+                <LocationImg
+                    src={location}
+                    onClick={() => getUserLocation()}
+                    alt="location"
+                />
                 <HeartImg
                     src={!liked ? emptyHeart : animHeart}
                     onClick={() => addORRemoveToFavorites()}
@@ -168,4 +193,8 @@ const H2 = styled.h2`
 const P = styled.p`
 font-size:20px;
 `
-
+const LocationImg = styled.img`
+width:10%;
+:hover{
+    cursor:pointer;
+}`
