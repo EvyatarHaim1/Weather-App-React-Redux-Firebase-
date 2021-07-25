@@ -44,14 +44,14 @@ export default class ApiRequests {
 
     static async getFiveDaysForecast(locationKey) {
         try {
-            return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key}dfgdfgdfg&language=en&details=true&metric=true%22`)
+            return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key}&language=en&details=true&metric=true%22`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
                 });
         } catch (error) {
             try {
-                return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key2}dfgdfgdfg&language=en&details=true&metric=true%22`)
+                return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key2}&language=en&details=true&metric=true%22`)
                     .then(response => response.json())
                     .then(data => {
                         return data;
