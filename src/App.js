@@ -11,12 +11,12 @@ import indigo from '@material-ui/core/colors/indigo';
 
 function App() {
 
-  const darkMode = useSelector((state) => state.setting.darkMode);
+  const darkmode = useSelector((state) => state.setting.darkmode);
 
   const theme = createMuiTheme({
     palette: {
       primary: indigo,
-      type: darkMode ? 'dark' : "light",
+      type: darkmode ? 'dark' : "light",
     },
     status: {
       danger: 'orange',

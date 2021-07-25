@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Input } from '@material-ui/core';
@@ -11,9 +11,10 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Searchbar() {
 
     const [city, setCity,] = useState('');
-    const [results, setResults] = useState([])
+    const [results, setResults] = useState([]);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const darkmode = useSelector((state) => state.setting.darkmode);
 
     useEffect(() => {
         fetchLocationAutocomplete()
@@ -46,7 +47,7 @@ export default function Searchbar() {
     return (
         <>
             <ToastContainer />
-            <Div>
+            <Div style={{ backgroundColor: darkmode ? 'rgb(120, 120, 120)' : 'whitesmoke' }}>
                 <SearchIcon />
                 <Input style={{ width: '85%', marginLeft: '2%' }}
                     disableUnderline={true}
@@ -57,7 +58,7 @@ export default function Searchbar() {
                     <CancelIcon onClick={clearResults} />}
             </Div>
             {results.length >= 1 &&
-                <List>
+                <List style={{ backgroundColor: darkmode ? 'black' : 'whitesmoke' }}>
                     {results.map(city => (
                         <Option key={city}
                             onClick={() => chooseCity(city)}>
@@ -96,7 +97,6 @@ const List = styled.div`
    border: 1px solid;
    width:30%;
    text-align:center;
-   background-color:rgb(180, 180, 180);
    margin-top: 3%;
    @media (max-width: 800px) {
     width:60%;

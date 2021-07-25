@@ -11,18 +11,11 @@ export default function Switches() {
     const darkmode = useSelector((state) => state.setting.darkmode);
     const dispatch = useDispatch();
 
-    const [state, setState] = React.useState({
-        checkedUnit: unit,
-        checkedDarkmode: darkmode,
-    });
-
     const handleChangeUnit = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
         dispatch({ type: 'CONVERT_TO_FAHRENHEIT', payload: !unit })
     };
 
     const handleChangeDarkMode = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
         dispatch({ type: 'SWITCH_TO_DARKMODE', payload: !darkmode });
     };
 
