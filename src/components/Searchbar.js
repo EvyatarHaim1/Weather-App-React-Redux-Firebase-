@@ -109,7 +109,7 @@ padding-top: -2%;
 :hover{
    background-color:lightgray;
     ${({ active }) => active && `
-    background: '#505050';
+    background: #505050;
   `}
     cursor: pointer;
 }
