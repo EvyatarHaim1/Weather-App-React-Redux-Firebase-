@@ -10,15 +10,16 @@ export default class ApiRequests {
                     return data;
                 });
         } catch (error) {
-            try {
-                return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key2}&q=${city}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        return data;
-                    });
-            } catch (error) {
-                console.log(error)
-            }
+            // try {
+            //     return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key2}&q=${city}`)
+            //         .then(response => response.json())
+            //         .then(data => {
+            //             return data;
+            //         });
+            // } 
+            // catch (error) {
+            console.log(error)
+            // }
         }
     }
 
