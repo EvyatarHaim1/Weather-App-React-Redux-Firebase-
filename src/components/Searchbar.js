@@ -19,7 +19,7 @@ export default function Searchbar() {
         fetchLocationAutocomplete()
     }, [city])
 
-    const notify = () => toast("You reached the maximum requests");
+    const notify = () => toast("Something went wrong with fetching cities");
 
     const fetchLocationAutocomplete = async () => {
         try {
@@ -44,6 +44,7 @@ export default function Searchbar() {
 
     return (
         <>
+            <ToastContainer />
             <Div>
                 <SearchIcon />
                 <Input style={{ width: '85%', marginLeft: '2%' }}

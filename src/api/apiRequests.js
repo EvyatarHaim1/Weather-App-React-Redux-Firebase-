@@ -4,14 +4,14 @@ export default class ApiRequests {
 
     static async locationAutocomplete(city) {
         try {
-            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key}+&q=${city}`)
+            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key}&q=${city}`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
                 });
         } catch (error) {
             try {
-                return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key2}+&q=${city}`)
+                return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key2}&q=${city}`)
                     .then(response => response.json())
                     .then(data => {
                         return data;
@@ -24,14 +24,14 @@ export default class ApiRequests {
 
     static async getCurrentWeather(locationKey) {
         try {
-            return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key}&language=en&details=true`)
+            return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key}dfgdfg&language=en&details=true`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
                 });
         } catch (error) {
             try {
-                return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key2}&language=en&details=true`)
+                return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key2}dfgdfg&language=en&details=true`)
                     .then(response => response.json())
                     .then(data => {
                         return data;

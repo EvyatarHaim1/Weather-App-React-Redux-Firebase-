@@ -7,6 +7,8 @@ import { animationToStatus } from '../animationToStatus';
 import ApiRequests from '../api/apiRequests';
 import { db } from '../firebase';
 import firebase from 'firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CurrentWeather() {
     const [liked, setliked] = useState(false);
@@ -63,6 +65,9 @@ export default function CurrentWeather() {
         }
     }
 
+    const notify = () => toast("Something went wrong with fetching current weather");
+
+
     const addORRemoveToFavorites = () => {
         if (!liked) {
             setliked(!liked)
@@ -93,6 +98,7 @@ export default function CurrentWeather() {
 
     return (
         <>
+            <ToastContainer />
             <H2>Current Weather</H2>
             <Div>
                 <SectionL>
