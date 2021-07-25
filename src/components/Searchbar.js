@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Input } from '@material-ui/core';
@@ -12,7 +12,7 @@ export default function Searchbar() {
 
     const [city, setCity,] = useState('');
     const [results, setResults] = useState([])
-    const darkmode = useSelector((state) => state.setting.darkmode)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -43,8 +43,6 @@ export default function Searchbar() {
         dispatch({ type: "UPDATE_CITY", payload: { city: city.LocalizedName, key: city.Key } })
     }
 
-    console.log('searchhhhhhh', darkmode)
-
     return (
         <>
             <ToastContainer />
@@ -59,7 +57,7 @@ export default function Searchbar() {
                     <CancelIcon onClick={clearResults} />}
             </Div>
             {results.length >= 1 &&
-                <List style={{ backgroundColor: darkmode ? 'black' : 'whitesmoke' }}>
+                <List>
                     {results.map(city => (
                         <Option key={city}
                             onClick={() => chooseCity(city)}>
@@ -98,6 +96,7 @@ const List = styled.div`
    border: 1px solid;
    width:30%;
    text-align:center;
+   background-color:rgb(180, 180, 180);
    margin-top: 3%;
    @media (max-width: 800px) {
     width:60%;

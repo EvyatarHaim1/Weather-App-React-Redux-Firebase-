@@ -23,7 +23,7 @@ export default function Switches() {
 
     const handleChangeDarkMode = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
-        dispatch({ type: 'SWITCH_TO_DARKMODE', payload: !state.checkedDarkmode })
+        dispatch({ type: 'SWITCH_TO_DARKMODE', payload: !darkmode })
     };
 
     function convertToF(celsius) {
