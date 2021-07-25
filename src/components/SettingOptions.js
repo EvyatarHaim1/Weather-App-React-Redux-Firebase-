@@ -37,7 +37,7 @@ export default function Switches() {
             <UnitSwitch>
                 C°
                 <Switch
-                    checked={state.checkedUnit}
+                    checked={unit}
                     onChange={handleChangeUnit}
                     color="primary"
                     name="checkedUnit"
@@ -48,7 +48,7 @@ export default function Switches() {
             <DarkMode>
                 <WbSunnyIcon color="primary" />
                 <Switch
-                    checked={state.checkedDarkmode}
+                    checked={darkmode}
                     onChange={handleChangeDarkMode}
                     color="primary"
                     name="checkedDarkmode"
