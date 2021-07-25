@@ -102,7 +102,8 @@ export default function CurrentWeather() {
         try {
             let res = await ApiRequests.getUserLocation(lat, long);
             let placeName = res.LocalizedName;
-
+            let key = res.Key
+            dispatch({ type: "UPDATE_CITY", payload: { city: placeName, key: key } })
         } catch (error) {
             notify()
             console.log(error)
