@@ -8,15 +8,15 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case CONVERT_TO_FAHRENHEIT:
-            console.log(action.payload)
             return {
                 ...state,
                 unit: action.payload
             }
         case SWITCH_TO_DARKMODE:
+            console.log(action.payload, state.darkmode)
             return {
                 ...state,
-                darkMode: action.payload
+                darkmode: action.payload
             }
         default:
             return state;
