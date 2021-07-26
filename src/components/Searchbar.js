@@ -69,7 +69,7 @@ export default function Searchbar() {
                     ))}
                 </List>
             }
-            {errorMessage && <ToastContainer />}
+            <ToastContainer />
         </>
     )
 }

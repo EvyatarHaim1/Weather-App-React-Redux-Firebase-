@@ -121,7 +121,6 @@ export default function CurrentWeather() {
 
     return (
         <>
-            <ToastContainer />
             <H2>Current Weather</H2>
             <Div>
                 <SectionL>
@@ -144,6 +143,7 @@ export default function CurrentWeather() {
                     alt="emptyHeart"
                 />
             </Div>
+            <ToastContainer />
         </>
     )
 }
