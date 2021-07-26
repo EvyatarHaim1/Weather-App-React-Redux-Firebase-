@@ -5,13 +5,12 @@ import { animationToStatus } from '../animationToStatus';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { db } from '../firebase';
 
-export default function City({ dayNum, weatherStatus, weatherC, weatherF, cityName, id }) {
+export default function City({ dayNum, weatherStatus, weatherC, cityName, id }) {
 
   const unit = useSelector((state) => state.setting.unit);
 
   const deleteFromFavorites = () => {
     db.collection("favorites").doc(id).delete().then(() => {
-      console.log("Document successfully deleted!");
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });

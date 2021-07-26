@@ -26,10 +26,9 @@ export default function Searchbar() {
     const fetchLocationAutocomplete = async () => {
         try {
             let res = await ApiRequests.locationAutocomplete(city);
-            console.log(res)
             setResults(res);
         } catch (error) {
-            console.log(error)
+            console.error(error)
             notify()
         }
     }

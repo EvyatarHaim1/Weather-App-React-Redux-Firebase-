@@ -13,7 +13,6 @@ export default (state = initialState, action) => {
                 unit: action.payload
             }
         case SWITCH_TO_DARKMODE:
-            console.log(action.payload, state.darkmode)
             return {
                 ...state,
                 darkmode: action.payload

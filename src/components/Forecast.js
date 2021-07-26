@@ -33,7 +33,7 @@ export default function Forecast() {
             })
         } catch (error) {
             notify()
-            console.log(error)
+            console.error(error)
         }
     }
 
@@ -50,7 +50,7 @@ export default function Forecast() {
                         key={day.Date}
                         dayNum={days[new Date(day.Date).getDay()]}
                         weatherStatus={day.Day.IconPhrase}
-                        weatherC={day.Temperature.Maximum.Value} // convert to C
+                        weatherC={day.Temperature.Maximum.Value}
                         weatherF={day.Temperature.Maximum.Value}
                     />
                 ))}
@@ -80,12 +80,6 @@ const ForecastContainer = styled.div`
 display: flex;
 flex-direction: row;
 @media (max-width: 700px) {
-    /* display: grid;
-    grid-template-areas: "x x "
-                         "x x "
-                         "x x ";
-    padding-top: 3%; 
-    margin-bottom: 10%; */
     display: flex;
     flex-direction: column;
   }

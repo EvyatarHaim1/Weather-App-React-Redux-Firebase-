@@ -33,7 +33,6 @@ export default function Favorites() {
                         cityName={city}
                         weatherStatus={tempStatus}
                         weatherC={currentWeatherC}
-                        weatherF={currentWeatherF}
                     />
                 ))}
             </FavoritesCitiesContainer>

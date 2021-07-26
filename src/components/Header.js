@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux'
 import SettingOptions from './SettingOptions';
 import { makeStyles } from '@material-ui/core/styles';
-import { createTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -31,8 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
     const classes = useStyles();
-    const convertUnit = useSelector((state) => state.setting.unit);
-    const darkMode = useSelector((state) => state.setting.darkMode);
 
     return (
         <Div>

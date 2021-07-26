@@ -8,7 +8,6 @@ import { animationToStatus } from '../animationToStatus';
 import ApiRequests from '../api/apiRequests';
 import { db } from '../firebase';
 import firebase from 'firebase';
-import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -66,7 +65,6 @@ export default function CurrentWeather() {
             })
         } catch (error) {
             notify()
-            console.log(error)
         }
     }
 
@@ -91,7 +89,6 @@ export default function CurrentWeather() {
         } else {
             setliked(!liked)
             db.collection("favorites").doc(id).delete().then(() => {
-                console.log("Document successfully deleted!");
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             });
@@ -106,7 +103,6 @@ export default function CurrentWeather() {
             dispatch({ type: "UPDATE_CITY", payload: { city: placeName, key: key } })
         } catch (error) {
             notify()
-            console.log(error)
         }
     }
 
