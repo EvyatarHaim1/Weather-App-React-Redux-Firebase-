@@ -18,7 +18,8 @@ export default function Searchbar() {
     const darkmode = useSelector((state) => state.setting.darkmode);
 
     useEffect(() => {
-        fetchLocationAutocomplete()
+        if (city)
+            fetchLocationAutocomplete()
     }, [city])
 
     const notify = () => toast("Something went wrong with fetching cities");
@@ -31,7 +32,7 @@ export default function Searchbar() {
         } catch (error) {
             console.log(error)
             setErrorMessage(error)
-            console.log('im the errorrrrr')
+            notify()
         }
     }
 
@@ -60,8 +61,8 @@ export default function Searchbar() {
             </Div>
             {results.length >= 1 &&
                 <List style={{ backgroundColor: darkmode ? 'rgb(60, 60, 60)' : 'whitesmoke' }}>
-                    {results.map(city => (
-                        <Option active={darkmode} key={city}
+                    {results.map((city, index) => (
+                        <Option active={darkmode} key={index}
                             onClick={() => chooseCity(city)}>
                             {city.Country.ID}{'  '}{city.LocalizedName}
                         </Option>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { animationToStatus } from '../animationToStatus';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { db } from '../firebase';
