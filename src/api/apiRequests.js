@@ -4,7 +4,7 @@ export default class ApiRequests {
 
     static async locationAutocomplete(city) {
         try {
-            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key1}&q=${city}`)
+            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key}&q=${city}`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
