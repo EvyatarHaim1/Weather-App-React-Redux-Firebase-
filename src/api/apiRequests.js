@@ -4,7 +4,7 @@ export default class ApiRequests {
 
     static async locationAutocomplete(city) {
         try {
-            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key4}&q=${city}`)
+            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key2}&q=${city}`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
@@ -45,7 +45,7 @@ export default class ApiRequests {
 
     static async getFiveDaysForecast(locationKey) {
         try {
-            return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key4}&language=en&details=true&metric=true%22`)
+            return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key2}&language=en&details=true&metric=true%22`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
