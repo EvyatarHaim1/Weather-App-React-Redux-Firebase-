@@ -1,10 +1,10 @@
-import { wheater_app_key, wheater_app_key2, wheater_app_key3, baseURL } from '../keys';
+import { wheater_app_key, wheater_app_key2, wheater_app_key3, wheater_app_key4, baseURL } from '../keys';
 
 export default class ApiRequests {
 
     static async locationAutocomplete(city) {
         try {
-            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key2}&q=${city}`)
+            return fetch(`${baseURL}/locations/v1/cities/autocomplete?apikey=${wheater_app_key4}&q=${city}`)
                 .then(response => response.json())
                 .then(data => {
                     return data;

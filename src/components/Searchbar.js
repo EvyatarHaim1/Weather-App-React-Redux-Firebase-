@@ -12,7 +12,6 @@ export default function Searchbar() {
 
     const [city, setCity,] = useState('');
     const [results, setResults] = useState([]);
-    const [errorMessage, setErrorMessage] = useState(null);
 
     const dispatch = useDispatch();
     const darkmode = useSelector((state) => state.setting.darkmode);
@@ -31,7 +30,6 @@ export default function Searchbar() {
             setResults(res);
         } catch (error) {
             console.log(error)
-            setErrorMessage(error)
             notify()
         }
     }
