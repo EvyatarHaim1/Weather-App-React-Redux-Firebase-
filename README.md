@@ -22,6 +22,10 @@ Features:
 - Temperature unit convertion - passing the Celcius as a parameter inside of a inner function while switching to °F mode.
 - Save & Delete cities to the database and rendering it on the Favorites Screen.
 
-![alt text](https://github.com/EvyatarHaim1/SIGNAL-React-Native/blob/main/screenView1.png)
-![alt text](https://github.com/EvyatarHaim1/SIGNAL-React-Native/blob/main/screenView2.png)
-![alt text](https://github.com/EvyatarHaim1/SIGNAL-React-Native/blob/main/screenView3.png)
+![alt text](https://github.com/EvyatarHaim1/evyatar-haim-21-07-2021/blob/main/src/assets/images/screenshots/10.png)
+![alt text](https://github.com/EvyatarHaim1/evyatar-haim-21-07-2021/blob/main/src/assets/images/screenshots/11.png)
+![alt text](https://github.com/EvyatarHaim1/evyatar-haim-21-07-2021/blob/main/src/assets/images/screenshots/12.png)
+![alt text](https://github.com/EvyatarHaim1/evyatar-haim-21-07-2021/blob/main/src/assets/images/screenshots/13.png)
+![alt text](https://github.com/EvyatarHaim1/evyatar-haim-21-07-2021/blob/main/src/assets/images/screenshots/14.png)
+![alt text](https://github.com/EvyatarHaim1/evyatar-haim-21-07-2021/blob/main/src/assets/images/screenshots/15.png)
+
