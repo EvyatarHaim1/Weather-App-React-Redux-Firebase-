@@ -1,7 +1,7 @@
 import './App.css';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -13,7 +13,7 @@ function App() {
 
   const darkmode = useSelector((state) => state.setting.darkmode);
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       primary: indigo,
       type: darkmode ? 'dark' : "light",
