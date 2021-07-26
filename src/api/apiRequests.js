@@ -25,7 +25,7 @@ export default class ApiRequests {
 
     static async getCurrentWeather(locationKey) {
         try {
-            return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key3}&language=en&details=true`)
+            return fetch(`${baseURL}/currentconditions/v1/${locationKey}?apikey=${wheater_app_key4}&language=en&details=true`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
@@ -45,7 +45,7 @@ export default class ApiRequests {
 
     static async getFiveDaysForecast(locationKey) {
         try {
-            return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key3}&language=en&details=true&metric=true%22`)
+            return fetch(`${baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${wheater_app_key4}&language=en&details=true&metric=true%22`)
                 .then(response => response.json())
                 .then(data => {
                     return data;
